@@ -3,7 +3,7 @@ const profileEmail = "";
 const socialProfiles = [
   // Isi username dan URL profil asli. WhatsApp: gunakan tautan chat wa.me milikmu.
   { name: "Instagram", icon: "fa-brands fa-instagram", username: "lillya._o", url: "https://www.instagram.com/lillya._o?utm_source=qr" },
-  { name: "TikTok", icon: "fa-brands fa-tiktok", username: "lillya._o", url: "" },
+  { name: "TikTok", icon: "fa-brands fa-tiktok", username: "llia._o", url: "https://www.tiktok.com/@llia._o" },
   { name: "WhatsApp", icon: "fa-brands fa-whatsapp", username: "085817505563", url: "https://wa.me/6285817505563" },
   { name: "Facebook", icon: "fa-brands fa-facebook-f", username: "lillya.dian", url: "" },
   { name: "LinkedIn", icon: "fa-brands fa-linkedin-in", username: "aprilia dian", url: "https://www.linkedin.com/in/aprilia-dian-9270a5409?utm_source=share_via&utm_content=profile&utm_medium=member_ios" },
