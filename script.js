@@ -73,7 +73,7 @@ socialProfiles.forEach((profile) => {
     card.setAttribute("aria-label", `Atur tautan ${profile.name}`);
     card.addEventListener("click", () => showToast(`Tambahkan username dan URL akun ${profile.name} di bagian socialProfiles pada script.js.`));
   }
-  const identity = profile.username.trim() || "Tambahkan username";
+  const identity = profile.username.trim() || "lillya._o";
   const icon = document.createElement("span");
   icon.className = "social-icon";
   icon.setAttribute("aria-hidden", "true");
