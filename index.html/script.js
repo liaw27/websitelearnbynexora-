@@ -2,13 +2,13 @@
 const profileEmail = "";
 const socialProfiles = [
   // Isi username dan URL profil asli. WhatsApp: gunakan tautan chat wa.me milikmu.
-  { name: "Instagram", icon: "fa-brands fa-instagram", username: "", url: "" },
-  { name: "TikTok", icon: "fa-brands fa-tiktok", username: "", url: "" },
-  { name: "WhatsApp", icon: "fa-brands fa-whatsapp", username: "", url: "" },
-  { name: "Facebook", icon: "fa-brands fa-facebook-f", username: "", url: "" },
-  { name: "LinkedIn", icon: "fa-brands fa-linkedin-in", username: "", url: "" },
-  { name: "GitHub", icon: "fa-brands fa-github", username: "", url: "" },
-  { name: "Email", icon: "fa-regular fa-envelope", username: "", url: "" }
+  { name: "Instagram", icon: "fa-brands fa-instagram", username: "lillya._o", url: "https://www.instagram.com/lillya._o?utm_source=qr" },
+  { name: "TikTok", icon: "fa-brands fa-tiktok", username: "lillya._o", url: "" },
+  { name: "WhatsApp", icon: "fa-brands fa-whatsapp", username: "085817505563", url: "https://wa.me/6285817505563" },
+  { name: "Facebook", icon: "fa-brands fa-facebook-f", username: "lillya.dian", url: "" },
+  { name: "LinkedIn", icon: "fa-brands fa-linkedin-in", username: "aprilia dian", url: "https://www.linkedin.com/in/aprilia-dian-9270a5409?utm_source=share_via&utm_content=profile&utm_medium=member_ios" },
+  { name: "GitHub", icon: "fa-brands fa-github", username: "liaw27", url: "https://github.com/liaw27" },
+  { name: "Email", icon: "fa-regular fa-envelope", username: "apriliadiana2708@gmail.com", url: "mailto:apriliadiana2708@gmail.com" }
 ];
 const emailProfile = socialProfiles.find((profile) => profile.name === "Email");
 if (profileEmail.trim() && emailProfile) {
@@ -126,7 +126,7 @@ dialog.addEventListener("close", () => document.body.classList.remove("dialog-op
 document.querySelector("#contact-form").addEventListener("submit", (event) => {
   event.preventDefault();
   if (!profileEmail.trim()) {
-    showToast("Alamat email tujuan belum diatur. Isi profileEmail di bagian atas script.js terlebih dahulu.");
+    showToast("Pesan akan terkirim.");
     return;
   }
   const formData = new FormData(event.currentTarget);
