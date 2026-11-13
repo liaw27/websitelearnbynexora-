@@ -2,13 +2,44 @@
 const profileEmail = "";
 const socialProfiles = [
   // Isi username dan URL profil asli. WhatsApp: gunakan tautan chat wa.me milikmu.
-  { name: "Instagram", icon: "fa-brands fa-instagram", username: "lillya._o", url: "https://www.instagram.com/lillya._o?utm_source=qr" },
-  { name: "TikTok", icon: "fa-brands fa-tiktok", username: "llia._o", url: "https://www.tiktok.com/@llia._o" },
-  { name: "WhatsApp", icon: "fa-brands fa-whatsapp", username: "085817505563", url: "https://wa.me/6285817505563" },
-  { name: "LinkedIn", icon: "fa-brands fa-linkedin-in", username: "aprilia dian", url: "https://www.linkedin.com/in/aprilia-dian-9270a5409?utm_source=share_via&utm_content=profile&utm_medium=member_ios" },
-  { name: "GitHub", icon: "fa-brands fa-github", username: "liaw27", url: "https://github.com/liaw27" },
-  { name: "Surel", icon: "fa-regular fa-envelope", username: "apriliadiana2708@gmail.com", url: "mailto:apriliadiana2708@gmail.com" }
+  { name: "Instagram", icon: "instagram", username: "lillya._o", url: "https://www.instagram.com/lillya._o?utm_source=qr" },
+  { name: "LinkedIn", icon: "linkedin", username: "aprilia dian", url: "https://www.linkedin.com/in/aprilia-dian-9270a5409?utm_source=share_via&utm_content=profile&utm_medium=member_ios" },
+  { name: "GitHub", icon: "github", username: "liaw27", url: "https://github.com/liaw27" },
+  { name: "Surel", icon: "email", username: "apriliadiana2708@gmail.com", url: "mailto:apriliadiana2708@gmail.com" }
 ];
+const iconShapes = {
+  soundOff: [{ tag: "path", attrs: { d: "M11 5 6 9H3v6h3l5 4V5Zm5 4 5 6m0-6-5 6" } }],
+  soundOn: [{ tag: "path", attrs: { d: "M11 5 6 9H3v6h3l5 4V5Zm4 3a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14" } }],
+  instagram: [
+    { tag: "rect", attrs: { x: "3.5", y: "3.5", width: "17", height: "17", rx: "5" } },
+    { tag: "circle", attrs: { cx: "12", cy: "12", r: "4" } },
+    { tag: "circle", attrs: { cx: "17.5", cy: "6.8", r: ".7", fill: "currentColor", stroke: "none" } }
+  ],
+  tiktok: [{ tag: "path", attrs: { d: "M14 4v10.5a4.5 4.5 0 1 1-4-4.47m4-6.03c.5 3 2.5 4.5 5 4.7" } }],
+  whatsapp: [
+    { tag: "path", attrs: { d: "M20.2 11.7a8.2 8.2 0 0 1-12.1 7.2L4 20l1.2-4a8.2 8.2 0 1 1 15-4.3Z" } },
+    { tag: "path", attrs: { d: "M9 8.4c.3-.6.7-.5 1-.5l.8 1.8c.1.3-.2.6-.6 1 .6 1.2 1.5 2 2.7 2.6.4-.5.8-.9 1.1-.7l1.8.8c.3.2.2.6.1.9-.3.8-1 1.2-1.8 1.2-2.3-.2-5.6-2.7-6.2-5-.2-.8.3-1.7 1.1-2.1Z" } }
+  ],
+  linkedin: [
+    { tag: "circle", attrs: { cx: "7", cy: "7", r: "1.1", fill: "currentColor", stroke: "none" } },
+    { tag: "path", attrs: { d: "M6 10v8m4-8v8m0-4c0-2.2 1.3-4 3.5-4s3.5 1.5 3.5 4v4" } }
+  ],
+  github: [{ tag: "path", attrs: { d: "M12 3a9 9 0 0 0-2.8 17.6c.4.1.6-.2.6-.4v-1.5c-2.5.5-3-1.1-3-1.1-.4-1-1-1.3-1-1.3-.8-.5.1-.5.1-.5.9.1 1.4.9 1.4.9.8 1.4 2.1 1 2.6.8.1-.6.3-1 .6-1.2-2-.2-4.1-1-4.1-4.4 0-1 .3-1.8.9-2.4-.1-.2-.4-1.1.1-2.4 0 0 .8-.2 2.5.9a8.6 8.6 0 0 1 4.5 0c1.7-1.1 2.5-.9 2.5-.9.5 1.3.2 2.2.1 2.4.6.6.9 1.4.9 2.4 0 3.5-2.1 4.2-4.1 4.4.3.3.6.8.6 1.7v2.5c0 .2.2.5.6.4A9 9 0 0 0 12 3Z", fill: "currentColor", stroke: "none" } }],
+  email: [{ tag: "path", attrs: { d: "M3 6h18v12H3zM3.5 7l8.5 6 8.5-6" } }]
+};
+function createIcon(name, className = "ui-icon") {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("class", className);
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("focusable", "false");
+  (iconShapes[name] || []).forEach(({ tag, attrs }) => {
+    const shape = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    Object.entries(attrs).forEach(([attribute, value]) => shape.setAttribute(attribute, value));
+    svg.append(shape);
+  });
+  return svg;
+}
 const emailProfile = socialProfiles.find((profile) => profile.name === "Surel");
 if (profileEmail.trim() && emailProfile) {
   emailProfile.username = profileEmail;
@@ -78,7 +109,7 @@ function updateSoundControl() {
   soundToggle.setAttribute("aria-label", soundEnabled ? "Matikan suara interaksi" : "Nyalakan suara interaksi");
   soundToggle.title = soundEnabled ? "SUARA AKTIF" : "SUARA NONAKTIF";
   soundToggle.classList.toggle("sound-active", soundEnabled);
-  soundToggle.innerHTML = `<i class="fa-solid ${soundEnabled ? "fa-volume-high" : "fa-volume-xmark"}" aria-hidden="true"></i>`;
+  soundToggle.replaceChildren(createIcon(soundEnabled ? "soundOn" : "soundOff"));
 }
 
 function saveSoundPreference() {
@@ -188,22 +219,24 @@ soundToggle.addEventListener("click", () => {
 
 document.addEventListener("pointerover", (event) => {
   if (event.pointerType === "touch" || !(event.target instanceof Element)) return;
-  const target = event.target.closest(".hero-name-word, .social-card, .skill-card, a, button");
+  const target = event.target.closest(".hero-name-word, .hero-tool, .social-card, .skill-card, .hobby-item, a, button");
   if (!target || target.contains(event.relatedTarget) || target === soundToggle) return;
-  if (target.matches(".social-card, .skill-card")) playSound("icon");
+  if (target.matches(".hero-tool, .social-card, .skill-card")) playSound("icon");
   else playSound("hover");
 }, { passive: true });
 
 document.addEventListener("click", (event) => {
   if (!(event.target instanceof Element)) return;
-  const target = event.target.closest(".hero-name-word, a, button");
+  const target = event.target.closest(".hero-name-word, .hero-tool, .skill-card, .hobby-item, a, button");
   if (!target || target === soundToggle) return;
   if (target === menuToggle) {
     playSound(menuToggle.getAttribute("aria-expanded") === "true" ? "menuOpen" : "menuClose");
   } else if (target.matches(".nav-links a")) {
     playSound("nav");
-  } else if (target.matches(".social-card")) {
+  } else if (target.matches(".hero-tool, .social-card, .skill-card")) {
     playSound("icon");
+  } else if (target.matches(".hobby-item")) {
+    playSound("click");
   } else if (target.matches(".button, .text-link")) {
     playSound("cta");
   } else {
@@ -213,8 +246,25 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("pointerdown", (event) => {
   if (prefersReducedMotion.matches || event.button !== 0 || !(event.target instanceof Element)) return;
-  const target = event.target.closest(".button, .text-link, .social-card, .back-top, .menu-toggle, .nav-sound-control");
+  const target = event.target.closest(".button, .text-link, .hero-name-word, .hero-tool, .hero-photo-wrap, .social-card, .skill-card, .hobby-item, .back-top, .menu-toggle, .nav-sound-control");
   if (!target) return;
+  if (target.matches(".hero-photo-wrap")) {
+    target.classList.add("is-touched");
+    window.setTimeout(() => target.classList.remove("is-touched"), 650);
+  }
+  if (target.matches(".skill-card")) {
+    const bounds = target.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width - .5;
+    const y = (event.clientY - bounds.top) / bounds.height - .5;
+    target.style.setProperty("--tilt-x", `${-y * 5}deg`);
+    target.style.setProperty("--tilt-y", `${x * 5}deg`);
+    target.classList.add("is-tilting");
+    window.setTimeout(() => target.classList.remove("is-tilting"), 260);
+  }
+  target.classList.remove("is-tapped");
+  window.requestAnimationFrame(() => target.classList.add("is-tapped"));
+  window.setTimeout(() => target.classList.remove("is-tapped"), 360);
+  if (!target.matches(".button, .text-link, .hero-tool, .social-card, .skill-card, .back-top, .menu-toggle, .nav-sound-control")) return;
   const bounds = target.getBoundingClientRect();
   const size = Math.max(36, Math.min(Math.max(bounds.width, bounds.height) * 1.25, 180));
   const ripple = document.createElement("span");
@@ -245,8 +295,29 @@ navLinks.addEventListener("click", (event) => {
 });
 
 const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-if (finePointer && !prefersReducedMotion.matches) {
-  document.documentElement.classList.add("has-custom-cursor");
+const touchPointer = window.matchMedia("(pointer: coarse)").matches || navigator.maxTouchPoints > 0;
+document.addEventListener("pointermove", (event) => {
+  if (!finePointer || prefersReducedMotion.matches || event.pointerType === "touch" || !(event.target instanceof Element)) return;
+  const card = event.target.closest(".skill-card");
+  if (!card || !card.classList.contains("is-visible")) return;
+  const bounds = card.getBoundingClientRect();
+  const x = (event.clientX - bounds.left) / bounds.width - .5;
+  const y = (event.clientY - bounds.top) / bounds.height - .5;
+  card.style.setProperty("--tilt-x", `${-y * 5}deg`);
+  card.style.setProperty("--tilt-y", `${x * 5}deg`);
+  card.classList.add("is-tilting");
+}, { passive: true });
+document.addEventListener("pointerout", (event) => {
+  if (!(event.target instanceof Element)) return;
+  const card = event.target.closest(".skill-card");
+  if (!card || card.contains(event.relatedTarget)) return;
+  card.classList.remove("is-tilting");
+  card.style.setProperty("--tilt-x", "0deg");
+  card.style.setProperty("--tilt-y", "0deg");
+}, { passive: true });
+if ((finePointer || touchPointer) && !prefersReducedMotion.matches) {
+  if (finePointer) document.documentElement.classList.add("has-custom-cursor");
+  if (touchPointer) document.documentElement.classList.add("has-touch-cursor");
   const trailDots = [];
   for (let index = 0; index < 4; index += 1) {
     const dot = document.createElement("span");
@@ -261,6 +332,8 @@ if (finePointer && !prefersReducedMotion.matches) {
   let ringY = 0;
   let cursorFrame = 0;
   let cursorStarted = false;
+  let activeTouchPointerId = null;
+  let touchCursorHideTimer = 0;
 
   function animateCursor() {
     ringX += (pointerX - ringX) * .22;
@@ -283,8 +356,7 @@ if (finePointer && !prefersReducedMotion.matches) {
     cursorFrame = needsFrame ? window.requestAnimationFrame(animateCursor) : 0;
   }
 
-  document.addEventListener("pointermove", (event) => {
-    if (event.pointerType === "touch") return;
+  function moveCursorTo(event, resetTrail = false) {
     pointerX = event.clientX;
     pointerY = event.clientY;
     customCursor.style.left = `${pointerX}px`;
@@ -292,9 +364,13 @@ if (finePointer && !prefersReducedMotion.matches) {
     customCursor.classList.add("is-visible");
     customCursorRing.classList.add("is-visible");
     cursorTrail.classList.add("is-visible");
-    const target = event.target instanceof Element ? event.target.closest("a, button") : null;
-    customCursorRing.classList.toggle("is-active", Boolean(target));
-    if (!cursorStarted) {
+    if (event.pointerType === "touch") {
+      customCursorRing.classList.add("is-active");
+    } else {
+      const target = event.target instanceof Element ? event.target.closest("a, button") : null;
+      customCursorRing.classList.toggle("is-active", Boolean(target));
+    }
+    if (!cursorStarted || resetTrail) {
       cursorStarted = true;
       ringX = pointerX;
       ringY = pointerY;
@@ -304,12 +380,43 @@ if (finePointer && !prefersReducedMotion.matches) {
       });
     }
     if (!cursorFrame) cursorFrame = window.requestAnimationFrame(animateCursor);
-  }, { passive: true });
+  }
 
-  document.documentElement.addEventListener("pointerleave", () => {
+  function hideCursor() {
     customCursor.classList.remove("is-visible");
     customCursorRing.classList.remove("is-visible", "is-active");
     cursorTrail.classList.remove("is-visible");
+  }
+
+  document.addEventListener("pointermove", (event) => {
+    if (event.pointerType === "touch") {
+      if (event.pointerId !== activeTouchPointerId) return;
+    } else if (!finePointer) {
+      return;
+    }
+    moveCursorTo(event);
+  }, { passive: true });
+
+  if (touchPointer) {
+    document.addEventListener("pointerdown", (event) => {
+      if (event.pointerType !== "touch") return;
+      activeTouchPointerId = event.pointerId;
+      window.clearTimeout(touchCursorHideTimer);
+      moveCursorTo(event, true);
+    }, { passive: true });
+
+    const finishTouch = (event) => {
+      if (event.pointerType !== "touch" || event.pointerId !== activeTouchPointerId) return;
+      activeTouchPointerId = null;
+      customCursorRing.classList.remove("is-active");
+      touchCursorHideTimer = window.setTimeout(hideCursor, 280);
+    };
+    window.addEventListener("pointerup", finishTouch, { passive: true });
+    window.addEventListener("pointercancel", finishTouch, { passive: true });
+  }
+
+  document.documentElement.addEventListener("pointerleave", () => {
+    if (activeTouchPointerId === null) hideCursor();
   });
 }
 
@@ -360,9 +467,7 @@ socialProfiles.forEach((profile) => {
   const icon = document.createElement("span");
   icon.className = "social-icon";
   icon.setAttribute("aria-hidden", "true");
-  const iconGlyph = document.createElement("i");
-  iconGlyph.className = profile.icon;
-  icon.append(iconGlyph);
+  icon.append(createIcon(profile.icon, "social-glyph"));
   const copy = document.createElement("span");
   copy.className = "social-copy";
   const title = document.createElement("strong");
@@ -378,6 +483,22 @@ socialProfiles.forEach((profile) => {
   socialGrid.append(card);
   revealObserver.observe(card);
 });
+
+document.querySelectorAll("body *").forEach((element) => {
+  const hasText = Array.from(element.childNodes).some((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim());
+  const hasPlaceholder = (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) && element.placeholder.trim();
+  const fontSize = Number.parseFloat(window.getComputedStyle(element).fontSize);
+  if ((hasText || hasPlaceholder || element.matches(".toast")) && fontSize <= 14) {
+    element.classList.add("small-text-interactive");
+  }
+});
+document.addEventListener("pointerdown", (event) => {
+  if (!(event.target instanceof Element)) return;
+  const target = event.target.closest(".small-text-interactive");
+  if (!target) return;
+  target.classList.add("is-text-touched");
+  window.setTimeout(() => target.classList.remove("is-text-touched"), 550);
+}, { passive: true });
 
 if (profileEmail.trim()) {
   document.querySelector("#contact-email-display").textContent = profileEmail;
