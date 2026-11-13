@@ -94,7 +94,7 @@ const soundProfiles = {
 };
 let soundContext = null;
 let soundMasterGain = null;
-let soundEnabled = false;
+let soundEnabled = true;
 let activeSoundVoices = 0;
 let pendingSound = null;
 let lastHoverSoundAt = 0;
@@ -264,7 +264,7 @@ document.addEventListener("pointerdown", (event) => {
   target.classList.remove("is-tapped");
   window.requestAnimationFrame(() => target.classList.add("is-tapped"));
   window.setTimeout(() => target.classList.remove("is-tapped"), 360);
-  if (!target.matches(".button, .text-link, .hero-tool, .social-card, .skill-card, .back-top, .menu-toggle, .nav-sound-control")) return;
+  if (!target.matches(".button, .text-link, .hero-tool, .social-card, .skill-card, .hobby-item, .back-top, .menu-toggle, .nav-sound-control")) return;
   const bounds = target.getBoundingClientRect();
   const size = Math.max(36, Math.min(Math.max(bounds.width, bounds.height) * 1.25, 180));
   const ripple = document.createElement("span");

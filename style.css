@@ -150,8 +150,8 @@ input.small-text-interactive.is-text-touched::placeholder, textarea.small-text-i
 .skills-intro, .social-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin: 55px 0 42px; }
 .skills-intro > p, .social-heading > p { width: min(330px, 39%); margin: 0 2% 5px 0; font-size: 12px; line-height: 1.85; color: var(--muted); }
 .skill-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-.skill-card { position: relative; min-height: 200px; padding: 24px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transform-style: preserve-3d; transition: background .25s, transform .25s, scale .18s ease; }
-.skill-card:hover { z-index: 1; background: var(--white); transform: translateY(-4px); }
+.skill-card { position: relative; min-height: 200px; padding: 24px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transform-style: preserve-3d; transition: background .25s, transform .25s, scale .18s ease, box-shadow .25s ease; }
+.skill-card:hover { z-index: 1; background: var(--white); transform: translateY(-4px); box-shadow: 0 12px 28px rgba(23,23,21,.09); }
 .skill-card.reveal.is-visible.is-tilting { transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(-3px); }
 .skill-index { position: absolute; right: 20px; top: 24px; font: 9px var(--font-mono); color: #a4a19b; }
 .skill-icon { display: grid; place-items: center; width: 37px; height: 37px; margin-bottom: 38px; background: #253340; color: #d7edff; font-size: 14px; font-weight: 700; }
@@ -173,7 +173,7 @@ input.small-text-interactive.is-text-touched::placeholder, textarea.small-text-i
 .hobbies-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 10%; padding: 77px 7% 0; }
 .hobbies-layout > h2 { position: sticky; top: 125px; align-self: start; }
 .hobbies-layout > h2 em { color: #f05a4d; }
-.hobby-item { display: grid; grid-template-columns: 45px 1fr 28px; align-items: center; min-height: 76px; border-bottom: 1px solid #3a3a37; transition: padding .25s ease, color .25s, scale .18s ease; }
+.hobby-item { position: relative; isolation: isolate; overflow: hidden; display: grid; grid-template-columns: 45px 1fr 28px; align-items: center; min-height: 76px; border-bottom: 1px solid #3a3a37; transition: padding .25s ease, color .25s, scale .18s ease; }
 .hobby-item:first-child { border-top: 1px solid #3a3a37; }
 .hobby-item > span { color: #aaa8a1; font: 9px var(--font-mono); }
 .hobby-item h3 { margin: 0; font-size: 17px; font-weight: 500; letter-spacing: -.04em; }
@@ -187,13 +187,15 @@ h2, h3 { transition: transform .28s cubic-bezier(.2,.7,.2,1); }
 .hobby-item i { color: #f05a4d; font-size: 16px; font-style: normal; transition: transform .25s ease; }
 .hobby-item:hover, .hobby-item.is-tapped { padding-inline: 12px; color: #f05a4d; }
 .hobby-item:hover i, .hobby-item.is-tapped i { transform: rotate(12deg) scale(1.12); }
+.hobby-item:hover i, .hobby-item.is-tapped i { animation: hobby-icon-bounce .46s ease both; }
+@keyframes hobby-icon-bounce { 0%, 100% { transform: rotate(12deg) scale(1.12); } 45% { transform: rotate(-9deg) translateY(-3px) scale(1.28); } }
 .social { background: #eeede9; }
 .social-heading { align-items: end; margin-bottom: 43px; }
 .social-heading > p { width: min(390px, 43%); }
 .social-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid #d5d3cd; border-left: 1px solid #d5d3cd; }
-.social-card { display: grid; grid-template-columns: 45px 1fr 20px; align-items: center; gap: 13px; min-height: 104px; padding: 18px 22px; border-right: 1px solid #d5d3cd; border-bottom: 1px solid #d5d3cd; transition: background .2s, color .2s, scale .18s ease; }
+.social-card { display: grid; grid-template-columns: 45px 1fr 20px; align-items: center; gap: 13px; min-height: 104px; padding: 18px 22px; border-right: 1px solid #d5d3cd; border-bottom: 1px solid #d5d3cd; transition: background .2s, color .2s, scale .18s ease, box-shadow .25s ease; }
 .social-card:not(.is-configured) { cursor: pointer; }
-.social-card:hover { background: var(--white); }
+.social-card:hover { background: var(--white); box-shadow: 0 10px 24px rgba(23,23,21,.08); }
 .social-icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; color: var(--white); background: var(--ink); font-size: 17px; transition: transform .25s, background .25s; }
 .social-glyph { display: block; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; }
 .social-card:hover .social-icon { transform: rotate(-8deg) scale(1.08); background: var(--red); }
