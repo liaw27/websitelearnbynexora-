@@ -8,7 +8,7 @@
   <title>Aprilia Dian — Desainer Kreatif dan Mahasiswa Informatika</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
@@ -36,17 +36,15 @@
   <main>
     <section class="hero section-pad" id="home">
       <div class="hero-grid shell">
-        <div class="hero-copy reveal">
-          <p class="eyebrow"><span class="eyebrow-dot"></span> PORTOFOLIO PRIBADI <span class="eyebrow-year">2026 / INDONESIA</span></p>
-          <h1><span class="hero-name-word">APRILIA</span><br><span class="hero-name-last"><span class="hero-name-word">DIAN</span><span class="red-period">.</span></span></h1>
-          <div class="hero-bottom">
-            <p class="hero-role">Desainer Kreatif <span>&</span><br>Mahasiswa Informatika</p>
-            <div class="hero-intro"><p>Halo! Saya Aprilia Dian, mahasiswa S1 Informatika yang memiliki ketertarikan pada dunia desain grafis, teknologi, UI/UX, dan pengembangan situs web.</p><a class="text-link" href="#contact">Hubungi saya <span aria-hidden="true">↘</span></a></div>
-          </div>
+        <p class="eyebrow reveal"><span class="eyebrow-dot"></span> PORTOFOLIO PRIBADI <span class="eyebrow-year">2026 / INDONESIA</span></p>
+        <h1 class="reveal"><span class="hero-name-word">APRILIA</span><br><span class="hero-name-last"><span class="hero-name-word">DIAN</span><span class="red-period">.</span></span></h1>
+        <div class="hero-bottom reveal" data-delay="120">
+          <p class="hero-role">Desainer Kreatif <span>&</span><br>Mahasiswa Informatika</p>
+          <div class="hero-intro"><p>Halo! Saya Aprilia Dian, mahasiswa S1 Informatika yang memiliki ketertarikan pada dunia desain grafis, teknologi, UI/UX, dan pengembangan situs web.</p><a class="text-link" href="#contact">Hubungi saya <span aria-hidden="true">↘</span></a></div>
         </div>
         <div class="hero-art reveal" data-delay="120">
           <div class="hero-index">01 — 05</div>
-          <div class="hero-photo-wrap"><img src="img/img1.jpeg" alt="Foto profil Aprilia Dian"><span class="photo-caption">DESAIN<br>BERTEMU KODE</span></div>
+          <div class="hero-photo-wrap"><img class="hero-photo" src="img/img1.jpeg" alt="Foto profil Aprilia Dian"><span class="photo-caption">DESAIN<br>BERTEMU KODE</span></div>
           <span class="hero-tool hero-tool-pen" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m4 20 4.5-1 10.9-10.9a2.1 2.1 0 0 0-3-3L5.5 16 4 20Z"></path><path d="m14.8 6.7 3 3"></path></svg></span>
           <span class="hero-tool hero-tool-camera" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"></path><circle cx="12" cy="13.5" r="3.2"></circle><path d="M17.5 10h.01"></path></svg></span>
           <span class="hero-tool hero-tool-laptop" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="12" rx="1.5"></rect><path d="M3 20h18l-1.5-3H4.5L3 20Zm6-10 2-2-2-2m4 4 2-2-2-2"></path></svg></span>
@@ -68,10 +66,17 @@
       <div class="shell">
         <div class="section-heading reveal"><p class="eyebrow"><span class="eyebrow-dot"></span> SEKILAS TENTANG SAYA</p><span class="section-number">01 / TENTANG</span></div>
         <div class="about-grid">
+          <aside class="about-index reveal" aria-label="Perjalanan dari desain ke teknologi">
+            <span class="about-index-number">01</span>
+            <span class="about-index-route">DKV<br><i>↓</i><br>INFORMATIKA</span>
+          </aside>
           <div class="about-copy reveal" data-delay="120">
             <h2>Curious mind.<br><em>Creative soul.</em></h2>
             <p class="about-lead">Saya suka bermain dengan ide, mencoba hal baru, dan menciptakan sesuatu dari hal-hal sederhana.</p>
-            <p>Berangkat dari DKV, fokus saya awalnya ada di desain visual. Sejak mempelajari Informatika, saya mulai mengenal teknologi dan proses membuat website. Masih banyak yang dipelajari, tetapi sekarang minat saya mencakup sisi visual dan teknis.</p>
+            <div class="about-story">
+              <p>Berangkat dari DKV, fokus saya awalnya ada di desain visual.</p>
+              <p>Sejak mempelajari Informatika, saya mulai mengenal teknologi dan proses membuat website. Masih banyak yang dipelajari, tetapi sekarang minat saya mencakup sisi visual dan teknis.</p>
+            </div>
             <div class="about-facts">
               <div><span>01</span><strong>Asal</strong><p>Sukoharjo, Indonesia</p></div><div><span>02</span><strong>Pendidikan</strong><p>S1 Informatika<br>ITB AAS Indonesia</p></div>
               <div><span>03</span><strong>Fondasi</strong><p>Desain Komunikasi Visual</p></div><div><span>04</span><strong>Fokus</strong><p>Desain grafis · UI/UX · Situs web</p></div>
@@ -134,7 +139,7 @@
   </main>
   <footer class="footer"><div class="shell">
     <div class="footer-top">
-      <div><a class="wordmark footer-brand" href="#home">APRILIA<span>DIAN</span><i>.</i></a><p>Desainer Kreatif & Mahasiswa Informatika</p></div>
+      <div><a class="wordmark footer-brand" href="#home">APRILIA<span>DIAN<i>.</i></span></a><p>Desainer Kreatif & Mahasiswa Informatika</p></div>
       <div class="footer-nav"><span>JELAJAHI</span><a href="#about">Tentang</a><a href="#skills">Keahlian</a><a href="#hobbies">Hobi</a></div>
       <div class="footer-nav"><span>TERHUBUNG</span><a href="#social">Media sosial</a><a href="#contact">Kontak</a></div><a class="back-top" href="#home" aria-label="Kembali ke atas">↑</a>
     </div>
