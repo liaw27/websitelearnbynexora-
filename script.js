@@ -420,6 +420,46 @@ if ((finePointer || touchPointer) && !prefersReducedMotion.matches) {
   });
 }
 
+if (finePointer && !prefersReducedMotion.matches) {
+  document.querySelectorAll(".button, .text-link, .back-top").forEach((target) => {
+    target.classList.add("magnetic");
+    target.addEventListener("pointermove", (event) => {
+      if (event.pointerType === "touch") return;
+      const bounds = target.getBoundingClientRect();
+      const offsetX = (event.clientX - bounds.left) / bounds.width - .5;
+      const offsetY = (event.clientY - bounds.top) / bounds.height - .5;
+      target.style.setProperty("--magnetic-x", `${offsetX * 7}px`);
+      target.style.setProperty("--magnetic-y", `${offsetY * 5}px`);
+    }, { passive: true });
+    target.addEventListener("pointerleave", () => {
+      target.style.removeProperty("--magnetic-x");
+      target.style.removeProperty("--magnetic-y");
+    }, { passive: true });
+  });
+
+  const heroSection = document.querySelector(".hero");
+  let heroPointerX = 0;
+  let heroPointerY = 0;
+  let heroMotionFrame = 0;
+  function updateHeroTilt() {
+    heroMotionFrame = 0;
+    heroArt.style.setProperty("--hero-rotate-x", `${-heroPointerY * 1.4}deg`);
+    heroArt.style.setProperty("--hero-rotate-y", `${heroPointerX * 1.4}deg`);
+  }
+  heroSection.addEventListener("pointermove", (event) => {
+    if (event.pointerType === "touch") return;
+    const bounds = heroSection.getBoundingClientRect();
+    heroPointerX = Math.max(-1, Math.min(1, ((event.clientX - bounds.left) / bounds.width - .5) * 2));
+    heroPointerY = Math.max(-1, Math.min(1, ((event.clientY - bounds.top) / bounds.height - .5) * 2));
+    if (!heroMotionFrame) heroMotionFrame = window.requestAnimationFrame(updateHeroTilt);
+  }, { passive: true });
+  heroSection.addEventListener("pointerleave", () => {
+    heroPointerX = 0;
+    heroPointerY = 0;
+    if (!heroMotionFrame) heroMotionFrame = window.requestAnimationFrame(updateHeroTilt);
+  }, { passive: true });
+}
+
 let scrollFrame = 0;
 function updateScrollMotion() {
   scrollFrame = 0;
@@ -449,10 +489,11 @@ document.querySelectorAll(".reveal").forEach((element) => {
 });
 
 const socialGrid = document.querySelector("#social-grid");
-socialProfiles.forEach((profile) => {
+socialProfiles.forEach((profile, index) => {
   const configured = /^(https:\/\/|mailto:)/i.test(profile.url.trim());
   const card = document.createElement(configured ? "a" : "button");
   card.className = `social-card reveal${configured ? " is-configured" : ""}`;
+  card.style.setProperty("--reveal-delay", `${index * 60}ms`);
   if (configured) {
     card.href = profile.url;
     card.target = "_blank";
